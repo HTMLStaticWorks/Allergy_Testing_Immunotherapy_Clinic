@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allergy Insights &amp; Articles | AllerPure Blog</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="doctors.html" class="nav-link">Doctors</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle theme-toggle-desktop" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle rtl-toggle-desktop" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-desktop">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+      <button class="icon-btn drawer-close" aria-label="Close Menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home</a>
+      <a href="home2.html" class="drawer-nav-link">Home 2</a>
+      <a href="services.html" class="drawer-nav-link">Services</a>
+      <a href="doctors.html" class="drawer-nav-link">Doctors</a>
+      <a href="blog.html" class="drawer-nav-link active">Blog</a>
+      <a href="contact.html" class="drawer-nav-link">Contact</a>
+      <a href="dashboard.html" class="drawer-nav-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <div class="drawer-toggles">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL"><i class="ph ph-arrows-left-right"></i></button>
+      </div>
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="hero" style="padding-bottom: var(--spacing-8);">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+      <div class="grid-overlay"></div>
+
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="eyebrow centered">Library</span>
+          <h1>Patient <span class="serif grad-text">resources</span></h1>
+          <p class="lead">Educational articles on managing triggers, understanding immunotherapy, and living well with
+            allergies.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card-grid">
+
+          <!-- Post 1 -->
+          <article class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left;"
+            data-reveal>
+            <a href="blog-single.html" style="display: block;">
+              <img src="assets/images/blog-spring-pollen.jpg" alt="Spring Pollen"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2); font-size: 0.875rem;">
+                <span class="tag" style="color: var(--color-primary); border-color: currentColor;">Seasonal</span>
+                <span style="color: var(--color-text-muted);">Oct 12, 2025</span>
+              </div>
+              <h3 style="margin-bottom: var(--spacing-2); font-size: 1.25rem;">
+                <a href="blog-single.html">Preparing for High Pollen Seasons: A Clinical Guide</a>
+              </h3>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-4);">Proactive steps you can take at home to
+                minimize exposure before the season begins.</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">By Dr. Sarah Jenkins</span>
+                <a href="blog-single.html" class="link-arrow">Read more <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 100ms;"
+            data-reveal>
+            <a href="blog-single.html" style="display: block;">
+              <img src="assets/images/blog-immunotherapy-shots-drops.jpg" alt="Immunotherapy"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2); font-size: 0.875rem;">
+                <span class="tag" style="color: var(--color-primary); border-color: currentColor;">Treatment</span>
+                <span style="color: var(--color-text-muted);">Sep 28, 2025</span>
+              </div>
+              <h3 style="margin-bottom: var(--spacing-2); font-size: 1.25rem;">
+                <a href="blog-single.html">Shots vs. Drops: Understanding Immunotherapy Options</a>
+              </h3>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-4);">A detailed comparison of subcutaneous and
+                sublingual immunotherapy effectiveness and convenience.</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">By Dr. Michael Chen</span>
+                <a href="blog-single.html" class="link-arrow">Read more <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 200ms;"
+            data-reveal>
+            <a href="blog-single.html" style="display: block;">
+              <img src="assets/images/blog-food-prep-school-lunches.jpg" alt="Food Prep"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2); font-size: 0.875rem;">
+                <span class="tag" style="color: var(--color-primary); border-color: currentColor;">Food Allergy</span>
+                <span style="color: var(--color-text-muted);">Sep 15, 2025</span>
+              </div>
+              <h3 style="margin-bottom: var(--spacing-2); font-size: 1.25rem;">
+                <a href="blog-single.html">Navigating School Lunches with Nut Allergies</a>
+              </h3>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-4);">Practical advice for parents on
+                communicating with schools and preparing safe meals.</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">By Dr. Sarah Jenkins</span>
+                <a href="blog-single.html" class="link-arrow">Read more <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left;"
+            data-reveal>
+            <a href="blog-single.html" style="display: block;">
+              <img src="assets/images/blog-clean-home-interior.jpg" alt="Clean Home Interior"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2); font-size: 0.875rem;">
+                <span class="tag" style="color: var(--color-primary); border-color: currentColor;">Environment</span>
+                <span style="color: var(--color-text-muted);">Aug 30, 2025</span>
+              </div>
+              <h3 style="margin-bottom: var(--spacing-2); font-size: 1.25rem;">
+                <a href="blog-single.html">Indoor Air Quality: Eliminating Dust Mites &amp; Mold</a>
+              </h3>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-4);">Simple environmental modifications to
+                reduce bedroom allergen loads and improve sleep.</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">By Dr. Elena Rodri</span>
+                <a href="blog-single.html" class="link-arrow">Read more <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 5 -->
+          <article class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 100ms;"
+            data-reveal>
+            <a href="blog-single.html" style="display: block;">
+              <img src="assets/images/blog-pediatric-asthma-exercise.jpg" alt="Pediatric Healthcare"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2); font-size: 0.875rem;">
+                <span class="tag" style="color: var(--color-primary); border-color: currentColor;">Pediatrics</span>
+                <span style="color: var(--color-text-muted);">Aug 14, 2025</span>
+              </div>
+              <h3 style="margin-bottom: var(--spacing-2); font-size: 1.25rem;">
+                <a href="blog-single.html">Understanding Pediatric Asthma and Exercise Flares</a>
+              </h3>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-4);">How to help children stay active safely
+                with proper premedication and action plans.</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">By Dr. David Patel</span>
+                <a href="blog-single.html" class="link-arrow">Read more <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 200ms;"
+            data-reveal>
+            <a href="blog-single.html" style="display: block;">
+              <img src="assets/images/blog-immunology-research.jpg" alt="Immunology Research"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2); font-size: 0.875rem;">
+                <span class="tag" style="color: var(--color-primary); border-color: currentColor;">Biologics</span>
+                <span style="color: var(--color-text-muted);">Jul 29, 2025</span>
+              </div>
+              <h3 style="margin-bottom: var(--spacing-2); font-size: 1.25rem;">
+                <a href="blog-single.html">Biologic Therapies: The Future of Severe Eczema Treatment</a>
+              </h3>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-4);">Targeted monoclonal antibody treatments
+                offered for severe atopic dermatitis and eczema.</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">By Dr. Ananya Sharma</span>
+                <a href="blog-single.html" class="link-arrow">Read more <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== FAQ ==================== -->
+    <section>
+      <div class="container container-narrow">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Got Questions?</span>
+          <h2>Frequently Asked <span class="serif">Questions</span></h2>
+          <p>Common questions about our clinical articles, research sources, and medical guidance.</p>
+        </div>
+
+        <div class="accordion" data-reveal>
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button">How often are new clinical articles published? <i
+                class="ph ph-plus"></i></button>
+            <div class="accordion-panel">
+              <p>Our board-certified medical team publishes new evidence-based guidance bi-weekly, covering seasonal
+                pollen forecasts, innovative immunotherapy clinical trials, and pediatric allergy management.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button">Can I request a topic for our allergists to cover? <i
+                class="ph ph-plus"></i></button>
+            <div class="accordion-panel">
+              <p>Yes! We welcome patient questions and topic suggestions. You can submit requested topics via your
+                patient portal or send a message to our clinical communications team.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button">Are these articles reviewed by medical professionals? <i
+                class="ph ph-plus"></i></button>
+            <div class="accordion-panel">
+              <p>Every article on AllerPure is written or strictly reviewed by our fellowship-trained allergists and
+                immunologists to ensure compliance with the latest AAAAI and ACAAI guidelines.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-deep">
+      <div class="mesh mesh-1" style="opacity: .16;"></div>
+      <div class="container container-narrow" style="text-align: center; position: relative; z-index: 2;" data-reveal>
+        <span class="eyebrow centered" style="margin-bottom: var(--spacing-3);">Beyond the articles</span>
+        <h2 style="margin-bottom: var(--spacing-3);">Answers for <span class="serif">your</span> symptoms</h2>
+        <p class="lead" style="color: rgba(255,255,255,.72); margin-bottom: var(--spacing-5);">
+          General guidance only goes so far. Bring your questions to a board-certified allergist
+          and get a plan built around your own triggers and history.
+        </p>
+        <div class="cta-actions">
+          <a href="index.html#book" class="btn btn-light btn-lg">Ask an allergist <i class="ph ph-arrow-right"></i></a>
+          <a href="tel:5551234567" class="btn btn-on-deep btn-lg"><i class="ph ph-phone"></i> (555) 123-4567</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: var(--spacing-3);">
+            <i class="ph-fill ph-drop"></i> AllerPure
+          </a>
+          <p>A premium allergy and immunology clinic dedicated to precision diagnostics and compassionate patient care.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+            <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html#testing">Skin &amp; Blood Testing</a>
+            <a href="services.html#immunotherapy">Immunotherapy</a>
+            <a href="services.html#food-allergy">Food Allergies</a>
+            <a href="services.html">Pediatric Care</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <div class="footer-links">
+            <a href="doctors.html">Our Doctors</a>
+            <a href="blog.html">Resources</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Patient Portal</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-links">
+            <a href="contact.html"><i class="ph ph-map-pin"></i> 123 Wellness Blvd, Suite 400<br>Clinical City, MD
+              20000</a>
+            <a href="tel:5551234567"><i class="ph ph-phone"></i> (555) 123-4567</a>
+            <a href="mailto:hello@allerpure.com"><i class="ph ph-envelope"></i> hello@allerpure.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AllerPure Clinic. All rights reserved.</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">HIPAA Notice</a>
+        </nav>
+      </div>
+
+      <div class="footer-watermark" aria-hidden="true">AllerPure</div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

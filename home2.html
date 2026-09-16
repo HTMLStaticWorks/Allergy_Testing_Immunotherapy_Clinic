@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AllerPure Clinic | Advanced Immunology</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="description"
+    content="AllerPure is a premium clinic dedicated to identifying and treating allergies. Build your allergy profile in 60 seconds.">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link active">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="doctors.html" class="nav-link">Doctors</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle theme-toggle-desktop" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle rtl-toggle-desktop" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-desktop">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+      <button class="icon-btn drawer-close" aria-label="Close Menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home</a>
+      <a href="home2.html" class="drawer-nav-link active">Home 2</a>
+      <a href="services.html" class="drawer-nav-link">Services</a>
+      <a href="doctors.html" class="drawer-nav-link">Doctors</a>
+      <a href="blog.html" class="drawer-nav-link">Blog</a>
+      <a href="contact.html" class="drawer-nav-link">Contact</a>
+      <a href="dashboard.html" class="drawer-nav-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <div class="drawer-toggles">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL"><i class="ph ph-arrows-left-right"></i></button>
+      </div>
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== HERO (SPLIT) ==================== -->
+    <section class="hero">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+
+      <div class="container split tight">
+        <div class="hero-copy">
+          <span class="eyebrow animate-slide-up stagger-1" style="margin-bottom: var(--spacing-3);">Clinical
+            excellence</span>
+
+          <h1 class="animate-slide-up stagger-2"
+            style="margin-bottom: var(--spacing-3); font-size: clamp(2.5rem, 4.6vw, 3.9rem);">
+            Precision allergy <span class="serif grad-text">diagnostics</span> &amp; care
+          </h1>
+
+          <p class="lead animate-slide-up stagger-3" style="margin-bottom: var(--spacing-5); max-width: 52ch;">
+            Experience world-class immunology tailored to your unique triggers. We focus on
+            true, lasting relief — not just symptom management.
+          </p>
+
+          <div class="animate-slide-up stagger-4"
+            style="display: flex; gap: var(--spacing-2); align-items: center; flex-wrap: wrap;">
+            <a href="#explorer" class="btn btn-primary btn-lg">Find my triggers <i class="ph ph-arrow-right"></i></a>
+            <a href="#book" class="btn btn-outline btn-lg">Schedule a visit</a>
+          </div>
+
+          <div class="animate-fade-in stagger-5"
+            style="display: flex; align-items: center; gap: 12px; margin-top: var(--spacing-5); flex-wrap: wrap;">
+            <div class="stars" style="margin: 0;">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="small muted"><strong style="color: var(--color-text-main);">4.9/5</strong> from 1,000+ verified
+              patients</span>
+          </div>
+        </div>
+
+        <div class="animate-fade-in stagger-3" style="position: relative;">
+          <div class="media-frame" style="aspect-ratio: 1 / 1;">
+            <img src="assets/images/hero-split-allergist-consultation.jpg"
+              alt="Allergist in consultation with a patient" loading="eager">
+          </div>
+
+          <div class="float-chip" style="bottom: -20px; left: -20px;">
+            <div class="fc-icon"><i class="ph ph-shield-check"></i></div>
+            <div style="text-align: left;">
+              <strong>Board Certified</strong>
+              <span>Allergists &amp; Immunologists</span>
+            </div>
+          </div>
+
+          <div class="float-chip hide-mobile" style="top: -20px; right: -20px;">
+            <div class="fc-icon"><i class="ph ph-test-tube"></i></div>
+            <div style="text-align: left;">
+              <strong>200+ allergens</strong>
+              <span>Screened in one panel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== INTERACTIVE: ALLERGY PROFILE EXPLORER ==================== -->
+    <section class="bg-alt" id="explorer">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Interactive · 60 seconds</span>
+          <h2>Build your <span class="serif">allergy profile</span></h2>
+          <p>Answer three quick questions and watch your likely trigger categories update in real time. Educational only
+            — a clinical evaluation confirms the picture.</p>
+        </div>
+
+        <div class="explorer" data-reveal="scale" id="allergyExplorer">
+          <!-- LEFT: questions -->
+          <div class="explorer-main">
+            <div class="explorer-progress">
+              <span class="progress-label" data-ex-step-label>Step 1 of 3</span>
+              <div class="progress-track">
+                <div class="progress-fill" data-ex-progress></div>
+              </div>
+            </div>
+
+            <!-- Step 1 — symptoms -->
+            <div class="explorer-step active" data-ex-step="1">
+              <h3>Which symptoms affect you most?</h3>
+              <p class="hint">Select all that apply.</p>
+              <div class="option-grid">
+                <button type="button" class="option" data-ex-opt="symptom" data-value="nasal"><i class="ph ph-wind"></i>
+                  Sneezing &amp; congestion</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="eyes"><i class="ph ph-eye"></i>
+                  Itchy, watery eyes</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="skin"><i
+                    class="ph ph-hand-heart"></i> Rashes or hives</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="breathing"><i
+                    class="ph ph-wind"></i> Wheeze or tight chest</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="gut"><i
+                    class="ph ph-bowl-food"></i> Reaction after eating</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="sinus"><i
+                    class="ph ph-head-circuit"></i> Sinus pressure/headache</button>
+              </div>
+            </div>
+
+            <!-- Step 2 — when & where -->
+            <div class="explorer-step" data-ex-step="2">
+              <h3>When and where does it flare?</h3>
+              <p class="hint">Pick the timing that fits best, then the setting.</p>
+
+              <div class="option-grid" style="margin-bottom: var(--spacing-3);">
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="spring"><i
+                    class="ph ph-flower-tulip"></i> Spring &amp; summer</button>
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="autumn"><i
+                    class="ph ph-leaf"></i> Autumn</button>
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="yearround"><i
+                    class="ph ph-calendar-dots"></i> All year round</button>
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="meals"><i
+                    class="ph ph-fork-knife"></i> Only after meals</button>
+              </div>
+
+              <div class="option-grid">
+                <button type="button" class="option" data-ex-opt="place" data-value="indoors"><i
+                    class="ph ph-house-line"></i> Worse indoors</button>
+                <button type="button" class="option" data-ex-opt="place" data-value="outdoors"><i
+                    class="ph ph-tree"></i> Worse outdoors</button>
+                <button type="button" class="option" data-ex-opt="place" data-value="pets"><i
+                    class="ph ph-paw-print"></i> Around pets</button>
+                <button type="button" class="option" data-ex-opt="place" data-value="damp"><i
+                    class="ph ph-drop-half-bottom"></i> Damp or humid rooms</button>
+              </div>
+            </div>
+
+            <!-- Step 3 — severity -->
+            <div class="explorer-step" data-ex-step="3">
+              <h3>How much does it disrupt your day?</h3>
+              <p class="hint">Drag to set the impact on work, sleep and activity.</p>
+
+              <div class="range-wrap">
+                <div
+                  style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--spacing-2);">
+                  <span class="small muted">Barely noticeable</span>
+                  <strong style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400;"
+                    data-ex-sev-label>Moderate</strong>
+                  <span class="small muted">Severe daily</span>
+                </div>
+                <input type="range" min="1" max="5" step="1" value="3" data-ex-severity aria-label="Symptom severity">
+              </div>
+
+              <div style="margin-top: var(--spacing-4);">
+                <p class="hint" style="margin-bottom: var(--spacing-2);">Have you already tried over-the-counter
+                  antihistamines?</p>
+                <div class="option-grid">
+                  <button type="button" class="option" data-ex-opt="otc" data-single data-value="yes-nohelp"><i
+                      class="ph ph-pill"></i> Yes — little relief</button>
+                  <button type="button" class="option" data-ex-opt="otc" data-single data-value="yes-some"><i
+                      class="ph ph-pill"></i> Yes — some relief</button>
+                  <button type="button" class="option" data-ex-opt="otc" data-single data-value="no"><i
+                      class="ph ph-prohibit"></i> Not yet</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="explorer-nav">
+              <button type="button" class="btn btn-ghost" data-ex-prev disabled><i class="ph ph-arrow-left"></i>
+                Back</button>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <button type="button" class="btn btn-ghost small" data-ex-reset>Reset</button>
+                <button type="button" class="btn btn-primary" data-ex-next>Next <i
+                    class="ph ph-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: live results -->
+          <div class="explorer-side">
+            <!-- Idle state -->
+            <div class="explorer-idle" data-ex-idle>
+              <div class="ring"><i class="ph ph-magnifying-glass"></i></div>
+              <h3 style="color: #fff;">Your live profile</h3>
+              <p style="color: rgba(255,255,255,.7); font-size: .9375rem;">
+                Start selecting symptoms and this panel will rank the allergen categories
+                most consistent with your answers.
+              </p>
+            </div>
+
+            <!-- Live state -->
+            <div data-ex-live hidden style="flex-direction: column; height: 100%;">
+              <span class="eyebrow" style="color: var(--brand-300);">Live profile</span>
+              <h3 style="color: #fff; margin-top: var(--spacing-2);">Likely trigger categories</h3>
+
+              <div class="readout" data-ex-bars>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Pollen &amp; outdoor</strong><span data-ex-val="pollen">0%</span>
+                  </div>
+                  <div class="bar">
+                    <div class="bar-fill" data-ex-bar="pollen"></div>
+                  </div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Dust mite &amp; indoor</strong><span data-ex-val="dust">0%</span>
+                  </div>
+                  <div class="bar">
+                    <div class="bar-fill" data-ex-bar="dust"></div>
+                  </div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Pet dander</strong><span data-ex-val="pet">0%</span></div>
+                  <div class="bar">
+                    <div class="bar-fill" data-ex-bar="pet"></div>
+                  </div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Mould spores</strong><span data-ex-val="mould">0%</span></div>
+                  <div class="bar">
+                    <div class="bar-fill" data-ex-bar="mould"></div>
+                  </div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Food &amp; ingested</strong><span data-ex-val="food">0%</span></div>
+                  <div class="bar">
+                    <div class="bar-fill" data-ex-bar="food"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-card">
+                <span class="tag"
+                  style="background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); color: #fff; margin-bottom: 10px;"
+                  data-ex-badge>Gathering answers</span>
+                <h4 data-ex-title>Keep going</h4>
+                <p data-ex-copy>Answer a few more questions for a suggested next step.</p>
+                <a href="#book" class="btn btn-light btn-sm btn-block" data-ex-cta>Book an evaluation <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+
+              <p class="small" style="color: rgba(255,255,255,.45); margin-top: var(--spacing-2); line-height: 1.5;">
+                This tool is educational and is not a diagnosis. Only clinical testing can confirm your allergens.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section>
+      <div class="container">
+        <div
+          style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--spacing-6); flex-wrap: wrap; gap: var(--spacing-3);"
+          data-reveal>
+          <div style="max-width: 620px;">
+            <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Clinical services</span>
+            <h2 style="margin-bottom: var(--spacing-2);">Everything under <span class="serif">one roof</span></h2>
+            <p class="muted">From environmental allergies to complex food sensitivities, our suite of services covers
+              every aspect of immunological health.</p>
+          </div>
+          <a href="services.html" class="btn btn-outline">View all services <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <div class="card-grid">
+          <div class="card" style="align-items: center; text-align: center;" data-reveal>
+            <div class="card-media">
+              <img src="assets/images/home-service-skin-blood-testing.jpg" alt="Skin & Blood Testing" loading="lazy">
+            </div>
+            <h3>Skin &amp; Blood Testing</h3>
+            <p>Accurate identification of allergens through rapid skin-prick or IgE blood testing in a comfortable
+              clinical setting.</p>
+            <a href="services.html#testing" class="link-arrow">Read more <i class="ph ph-caret-right"></i></a>
+          </div>
+
+          <div class="card"
+            style="align-items: center; text-align: center; background: var(--grad-deep); border-color: transparent; --reveal-delay: 100ms;"
+            data-reveal>
+            <div class="card-media">
+              <img src="assets/images/home-service-immunotherapy.jpg" alt="Immunotherapy" loading="lazy">
+            </div>
+            <h3 style="color: #fff;">Immunotherapy</h3>
+            <p style="color: rgba(255,255,255,.75);">Long-term immune system retraining using customized allergy shots
+              or sublingual drops, tracked in your portal.</p>
+            <a href="services.html#immunotherapy" class="link-arrow" style="color: #fff;">Read more <i
+                class="ph ph-caret-right"></i></a>
+          </div>
+
+          <div class="card" style="align-items: center; text-align: center; --reveal-delay: 200ms;" data-reveal>
+            <div class="card-media">
+              <img src="assets/images/home-service-food-allergy.jpg" alt="Food Allergy Management" loading="lazy">
+            </div>
+            <h3>Food Allergy Management</h3>
+            <p>Safe oral challenges, elimination diet guidance, and personalized emergency anaphylaxis action plans.</p>
+            <a href="services.html#food-allergy" class="link-arrow">Read more <i class="ph ph-caret-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="bg-alt">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Patient Stories</span>
+          <h2>Life without <span class="serif">limitations</span></h2>
+          <p>Real stories from patients who reclaimed their everyday comfort and active lifestyles through our targeted
+            immunotherapy and precision testing.</p>
+        </div>
+
+        <div class="card-grid quote-grid">
+          <div class="quote-card" data-reveal>
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <blockquote>
+              "After 15 years of severe spring hay fever and constant fatigue, three months into sublingual drops
+              changed everything. I can finally enjoy outdoor runs again!"
+            </blockquote>
+            <div class="person">
+              <div class="avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=3&q=80&w=200&h=200"
+                  alt="Sarah Jenkins" loading="lazy">
+              </div>
+              <div>
+                <strong>Sarah Jenkins</strong>
+                <span>Seasonal Allergy Patient</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-card" style="--reveal-delay: 100ms;" data-reveal>
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <blockquote>
+              "Finding out my son's precise peanut threshold gave our family peace of mind. The clinical team walked us
+              through every step with incredible warmth and care."
+            </blockquote>
+            <div class="person">
+              <div class="avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=3&q=80&w=200&h=200"
+                  alt="Marcus Vance" loading="lazy">
+              </div>
+              <div>
+                <strong>Marcus Vance</strong>
+                <span>Parent of Pediatric Patient</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-card" style="--reveal-delay: 200ms;" data-reveal>
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <blockquote>
+              "The patient portal tracking is seamless. I can see my exact desensitization progress and reorder drops
+              with one click. Modern medicine done right."
+            </blockquote>
+            <div class="person">
+              <div class="avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=facearea&facepad=3&q=80&w=200&h=200"
+                  alt="Elena Rostova" loading="lazy">
+              </div>
+              <div>
+                <strong>Elena Rostova</strong>
+                <span>Immunotherapy Patient</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SPECIALISTS ==================== -->
+    <section>
+      <div class="container">
+        <div
+          style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--spacing-6); flex-wrap: wrap; gap: var(--spacing-3);"
+          data-reveal>
+          <div style="max-width: 620px;">
+            <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Medical Authority</span>
+            <h2 style="margin-bottom: var(--spacing-2);">Meet our <span class="serif">specialists</span></h2>
+            <p class="muted">Led by fellowship-trained allergists and immunologists dedicated to precision diagnostics
+              and compassionate patient care.</p>
+          </div>
+          <a href="doctors.html" class="btn btn-outline">All Specialists <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <div class="card-grid">
+          <!-- Doctor 1 -->
+          <div class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left;" data-reveal>
+            <div class="card-media doc-photo">
+              <img src="assets/images/doctor-sarah-jenkins.jpg" alt="Dr. Sarah Jenkins" loading="lazy">
+            </div>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Sarah Jenkins</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                FAAAAI · Chief of Allergy</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag"> Allergies</span>
+                <span class="tag">Food Sensitivities</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Working closely with families to turn
+                anxiety about complex triggers into confident, long-term management."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">15+ Years Exp.</span>
+                <a href="doctors.html" style="color: var(--color-primary); font-weight: 500;" class="link-arrow">View
+                  Profile <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 2 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 100ms;"
+            data-reveal>
+            <div class="card-media doc-photo">
+              <img src="assets/images/doctor-michael-chen.jpg" alt="Dr. Michael Chen" loading="lazy">
+            </div>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Michael Chen</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                PhD · Immunotherapy Director</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Immunotherapy</span>
+                <span class="tag">Severe Asthma</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Retraining the immune system so patients
+                can live their daily lives completely unhindered by environmental factors."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">12+ Years Exp.</span>
+                <a href="doctors.html" style="color: var(--color-primary); font-weight: 500;" class="link-arrow">View
+                  Profile <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 3 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 200ms;"
+            data-reveal>
+            <div class="card-media doc-photo">
+              <img src="assets/images/doctor-elena-rodriguez.jpg" alt="Dr. Elena Rodriguez" loading="lazy">
+            </div>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Elena Rodriguez</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                FACAAI · Diagnostic Lead</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Environmental</span>
+                <span class="tag">Biologics</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Precision component-resolved diagnostics
+                allow us to target treatment plans precisely down to single allergen proteins."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">8+ Years Exp.</span>
+                <a href="doctors.html" style="color: var(--color-primary); font-weight: 500;" class="link-arrow">View
+                  Profile <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="bg-deep" id="book">
+      <div class="mesh mesh-1" style="opacity: .16;"></div>
+      <div class="container container-narrow"
+        style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 2;"
+        data-reveal>
+        <div
+          style="width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); font-size: 1.75rem; color: #fff; margin-bottom: var(--spacing-4);">
+          <i class="ph ph-calendar-plus"></i>
+        </div>
+        <h2 style="margin-bottom: var(--spacing-3);">Ready for <span class="serif">relief?</span></h2>
+        <p class="lead" style="color: rgba(255,255,255,.72); margin-bottom: var(--spacing-5);">
+          Our specialists are accepting new patients. Schedule your comprehensive allergy
+          evaluation today — most appointments are available within two weeks.
+        </p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-light btn-lg">Book your visit <i class="ph ph-arrow-right"></i></a>
+          <a href="tel:5551234567" class="btn btn-on-deep btn-lg"><i class="ph ph-phone"></i> (555) 123-4567</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: var(--spacing-3);">
+            <i class="ph-fill ph-drop"></i> AllerPure
+          </a>
+          <p>A premium allergy and immunology clinic dedicated to precision diagnostics and compassionate care.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+            <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <div class="footer-links">
+            <a href="services.html">Services</a>
+            <a href="doctors.html">Our Doctors</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="blog.html">Resources</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Portal</h4>
+          <div class="footer-links">
+            <a href="login.html">Patient Login</a>
+            <a href="register.html">Register</a>
+            <a href="dashboard.html">Dashboard</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-links">
+            <a href="contact.html"><i class="ph ph-map-pin"></i> 123 Wellness Blvd, Suite 400</a>
+            <a href="tel:5551234567"><i class="ph ph-phone"></i> (555) 123-4567</a>
+            <a href="mailto:hello@allerpure.com"><i class="ph ph-envelope"></i> hello@allerpure.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AllerPure Clinic. All rights reserved.</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">HIPAA Notice</a>
+        </nav>
+      </div>
+      <div class="footer-watermark" aria-hidden="true">AllerPure</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

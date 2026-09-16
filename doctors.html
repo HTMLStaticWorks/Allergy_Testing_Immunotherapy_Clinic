@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Doctors | AllerPure Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="description" content="Meet our board-certified allergists and immunologists.">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="doctors.html" class="nav-link active">Doctors</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle theme-toggle-desktop" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle rtl-toggle-desktop" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-desktop">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+      <button class="icon-btn drawer-close" aria-label="Close Menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home</a>
+      <a href="home2.html" class="drawer-nav-link">Home 2</a>
+      <a href="services.html" class="drawer-nav-link">Services</a>
+      <a href="doctors.html" class="drawer-nav-link active">Doctors</a>
+      <a href="blog.html" class="drawer-nav-link">Blog</a>
+      <a href="contact.html" class="drawer-nav-link">Contact</a>
+      <a href="dashboard.html" class="drawer-nav-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <div class="drawer-toggles">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL"><i class="ph ph-arrows-left-right"></i></button>
+      </div>
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="hero" style="padding-bottom: var(--spacing-8);">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+      <div class="grid-overlay"></div>
+
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="eyebrow centered">The team</span>
+          <h1>Clinical <span class="serif grad-text">expertise</span></h1>
+          <p class="lead">Board-certified allergists and immunologists dedicated to compassionate, evidence-based care.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: var(--spacing-6);">
+      <div class="container">
+
+        <div class="card-grid">
+          <!-- Doctor 1 -->
+          <div class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left;" data-reveal>
+            <img src="assets/images/doctors-page-sarah-jenkins.jpg" alt="Dr. Sarah Jenkins" class="doc-photo-img">
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Sarah Jenkins</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                FAAAAI</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Pediatric Allergies</span>
+                <span class="tag">Food Sensitivities</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"I believe in working closely with
+                families to turn anxiety about food allergies into confident management."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">15+ Years Exp.</span>
+                <a href="index.html#book" style="color: var(--color-primary); font-weight: 500;">Book <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 2 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 100ms;"
+            data-reveal>
+            <img src="assets/images/doctors-page-michael-chen.jpg" alt="Dr. Michael Chen" class="doc-photo-img">
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Michael Chen</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                PhD</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Immunotherapy</span>
+                <span class="tag">Asthma</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"My goal is to retrain the immune system
+                so my patients can live their lives completely unhindered by their environment."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">12+ Years Exp.</span>
+                <a href="index.html#book" style="color: var(--color-primary); font-weight: 500;">Book <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 3 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 200ms;"
+            data-reveal>
+            <img src="assets/images/doctors-page-elena-rodriguez.jpg" alt="Dr. Elena Rodriguez" class="doc-photo-img">
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Elena Rodriguez</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                FACAAI</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Environmental</span>
+                <span class="tag">Skin Allergies</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Precision diagnostics allow us to create
+                highly personalized, effective treatment plans for complex cases."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">8+ Years Exp.</span>
+                <a href="index.html#book" style="color: var(--color-primary); font-weight: 500;">Book <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 4 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 100ms;"
+            data-reveal>
+            <img src="assets/images/doctors-page-david-patel.jpg" alt="Dr. David Patel" class="doc-photo-img">
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. David Patel</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                FAAAAI</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Insect Venom</span>
+                <span class="tag">Anaphylaxis Risk</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Empowering patients with rapid emergency
+                protocols and definitive venom desensitization therapies."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">10+ Years Exp.</span>
+                <a href="index.html#book" style="color: var(--color-primary); font-weight: 500;">Book <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 5 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 200ms;"
+            data-reveal>
+            <img src="assets/images/doctors-page-ananya-sharma.jpg" alt="Dr. Ananya Sharma" class="doc-photo-img">
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Ananya Sharma</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                PhD</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Biologic Therapy</span>
+                <span class="tag">Chronic Rhinitis</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Pioneering targeted biologic treatments
+                for severe, therapy-resistant asthma and chronic nasal polyps."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">14+ Years Exp.</span>
+                <a href="index.html#book" style="color: var(--color-primary); font-weight: 500;">Book <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 6 -->
+          <div class="card"
+            style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 300ms;"
+            data-reveal>
+            <img src="assets/images/doctors-page-robert-sterling.jpg" alt="Dr. Robert Sterling" class="doc-photo-img">
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Robert Sterling</h3>
+              <span
+                style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">MD,
+                FACAAI</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Occupational</span>
+                <span class="tag">Patch Testing</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Specializing in complex workplace
+                allergen exposures, contact dermatitis, and specialized patch testing."</p>
+              <div
+                style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">18+ Years Exp.</span>
+                <a href="index.html#book" style="color: var(--color-primary); font-weight: 500;">Book <i
+                    class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MINIMAL BOOKING ENQUIRY FORM ==================== -->
+    <section class="bg-alt" id="enquiry">
+      <div class="container container-narrow">
+        <div class="card" style="padding: var(--spacing-6); border-radius: var(--radius-xl);" data-reveal>
+          <div class="section-header" style="margin-bottom: var(--spacing-5);">
+            <span class="eyebrow centered">Quick Consultation</span>
+            <h2>Book an <span class="serif">Enquiry</span></h2>
+            <p>Select your specialist and send a quick consultation request. Our care coordinator will contact you
+              within 24 hours.</p>
+          </div>
+
+          <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Enquiry submitted successfully!');"
+            style="width: 100%;">
+            <div
+              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-3);">
+              <div class="form-group">
+                <label class="form-label" for="enquiry-name">Full Name</label>
+                <input type="text" id="enquiry-name" class="form-control" placeholder="e.g. Eleanor Vance" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="enquiry-contact">Phone or Email</label>
+                <input type="text" id="enquiry-contact" class="form-control" placeholder="e.g. (555) 019-2834 or email"
+                  required>
+              </div>
+            </div>
+
+            <div
+              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-3);">
+              <div class="form-group">
+                <label class="form-label" for="enquiry-doctor">Select Specialist</label>
+                <select id="enquiry-doctor" class="form-control" required>
+                  <option value="" disabled selected>Choose a Doctor</option>
+                  <option value="jenkins">Dr. Sarah Jenkins (Pediatric &amp; Food)</option>
+                  <option value="chen">Dr. Michael Chen (Immunotherapy &amp; Asthma)</option>
+                  <option value="rodriguez">Dr. Elena Rodriguez (Environmental)</option>
+                  <option value="patel">Dr. David Patel (Insect Venom &amp; Risk)</option>
+                  <option value="sharma">Dr. Ananya Sharma (Biologics &amp; Polyps)</option>
+                  <option value="sterling">Dr. Robert Sterling (Occupational &amp; Patch)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="enquiry-date">Preferred Date</label>
+                <input type="date" id="enquiry-date" class="form-control" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: var(--spacing-2);">
+              Submit Booking Enquiry <i class="ph ph-paper-plane-tilt"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-deep">
+      <div class="mesh mesh-1" style="opacity: .16;"></div>
+      <div class="container container-narrow" style="text-align: center; position: relative; z-index: 2;" data-reveal>
+        <span class="eyebrow centered" style="margin-bottom: var(--spacing-3);">Your care team</span>
+        <h2 style="margin-bottom: var(--spacing-3);">See the specialist who <span class="serif">fits</span></h2>
+        <p class="lead" style="color: rgba(255,255,255,.72); margin-bottom: var(--spacing-5);">
+          Request a consultation with the allergist of your choice, or let our care coordinator
+          match you to the right sub-specialty. No referral needed.
+        </p>
+        <div class="cta-actions">
+          <a href="index.html#book" class="btn btn-light btn-lg">Request a consultation <i
+              class="ph ph-arrow-right"></i></a>
+          <a href="tel:5551234567" class="btn btn-on-deep btn-lg"><i class="ph ph-phone"></i> (555) 123-4567</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: var(--spacing-3);">
+            <i class="ph-fill ph-drop"></i> AllerPure
+          </a>
+          <p>A premium allergy and immunology clinic dedicated to precision diagnostics and compassionate patient care.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+            <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html#testing">Skin &amp; Blood Testing</a>
+            <a href="services.html#immunotherapy">Immunotherapy</a>
+            <a href="services.html#food-allergy">Food Allergies</a>
+            <a href="services.html">Pediatric Care</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <div class="footer-links">
+            <a href="doctors.html">Our Doctors</a>
+            <a href="blog.html">Resources</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Patient Portal</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-links">
+            <a href="contact.html"><i class="ph ph-map-pin"></i> 123 Wellness Blvd, Suite 400<br>Clinical City, MD
+              20000</a>
+            <a href="tel:5551234567"><i class="ph ph-phone"></i> (555) 123-4567</a>
+            <a href="mailto:hello@allerpure.com"><i class="ph ph-envelope"></i> hello@allerpure.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AllerPure Clinic. All rights reserved.</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">HIPAA Notice</a>
+        </nav>
+      </div>
+
+      <div class="footer-watermark" aria-hidden="true">AllerPure</div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Login | AllerPure Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="auth-page">
+
+  <!-- Top Right Floating Action Toggles -->
+  <div class="auth-top-actions">
+    <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode">
+      <i class="ph ph-moon"></i>
+    </button>
+    <button class="icon-btn rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL">
+      <i class="ph ph-arrows-left-right"></i>
+    </button>
+  </div>
+
+  <div class="auth-card">
+    <div class="auth-header">
+      <a href="index.html" class="logo" style="text-decoration: none; margin-bottom: 20px;">
+        <i class="ph-fill ph-drop" style="color: var(--color-primary); font-size: 1.5rem;"></i>
+        <span style="font-weight: 800; letter-spacing: 2px; font-size: 1.125rem; color: var(--color-primary);">ALLERPURE</span>
+      </a>
+      <h1>WELCOME BACK</h1>
+      <p>Login to manage your appointments and health portal</p>
+    </div>
+
+    <form class="validate-form" action="dashboard.html" method="GET">
+      <div class="form-group">
+        <label class="form-label" for="lg-email" style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;">EMAIL ADDRESS</label>
+        <input id="lg-email" type="email" class="form-control" name="email" required placeholder="patient@example.com" style="height: 50px; border-radius: 14px;">
+        <span class="error-message">Valid email is required</span>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 8px;">
+        <label class="form-label" for="lg-pass" style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;">PASSWORD</label>
+        <div class="password-input-wrap">
+          <input id="lg-pass" type="password" class="form-control" name="password" required placeholder="••••••••">
+          <button type="button" class="toggle-password-btn" aria-label="Toggle password visibility">
+            <i class="ph ph-eye"></i>
+          </button>
+        </div>
+        <span class="error-message">Password is required (min 8 chars)</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin: 16px 0 24px 0;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--color-text-muted); font-size: 0.875rem;">
+          <input type="checkbox" style="width: 16px; height: 16px; accent-color: var(--color-primary);"> Remember me
+        </label>
+        <a href="#" class="auth-link" style="font-size: 0.875rem;">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="height: 52px; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 10px 24px rgba(0, 168, 150, 0.35);">
+        LOGIN TO ACCOUNT
+      </button>
+    </form>
+
+    <div class="auth-divider">OR</div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 24px;">
+      <button class="social-btn" type="button">
+        <svg class="google-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg> Continue with Google
+      </button>
+      <button class="social-btn" type="button">
+        <i class="ph-fill ph-apple-logo" style="font-size: 1.25rem;"></i> Continue with Apple
+      </button>
+    </div>
+
+    <p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">
+      Don't have an account? <a href="register.html" class="auth-link auth-link-strong">Register here</a>
+    </p>
+
+    <p style="margin-top: 20px;">
+      <a href="index.html" class="small muted link-arrow" style="color: var(--color-text-subtle); text-decoration: none; font-size: 0.8125rem;">
+        <i class="ph ph-arrow-left"></i> Back to site
+      </a>
+    </p>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

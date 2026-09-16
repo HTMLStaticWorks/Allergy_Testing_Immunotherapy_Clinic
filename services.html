@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | AllerPure Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="description"
+    content="Discover our clinical services including Skin Testing, Immunotherapy, and Food Allergy Management.">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="doctors.html" class="nav-link">Doctors</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle theme-toggle-desktop" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle rtl-toggle-desktop" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-desktop">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <i class="ph-fill ph-drop"></i> AllerPure
+      </a>
+      <button class="icon-btn drawer-close" aria-label="Close Menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home</a>
+      <a href="home2.html" class="drawer-nav-link">Home 2</a>
+      <a href="services.html" class="drawer-nav-link active">Services</a>
+      <a href="doctors.html" class="drawer-nav-link">Doctors</a>
+      <a href="blog.html" class="drawer-nav-link">Blog</a>
+      <a href="contact.html" class="drawer-nav-link">Contact</a>
+      <a href="dashboard.html" class="drawer-nav-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <div class="drawer-toggles">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL"><i class="ph ph-arrows-left-right"></i></button>
+      </div>
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="hero" style="padding-bottom: var(--spacing-8);">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+      <div class="grid-overlay"></div>
+
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="eyebrow centered">What we treat</span>
+          <h1>Clinical <span class="serif grad-text">services</span></h1>
+          <p class="lead">Comprehensive diagnostic and therapeutic solutions for lasting allergy relief, grounded in the
+            latest immunological science.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Skin Testing -->
+    <section id="testing">
+      <div class="container split tight">
+        <div class="service-copy" style="order: 1;" data-reveal="left">
+          <div class="card-icon" style="margin-bottom: var(--spacing-3);">
+            <i class="ph ph-test-tube"></i>
+          </div>
+          <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Diagnostics</span>
+          <h2 style="margin-bottom: var(--spacing-3);">Allergy Skin &amp; <span class="serif">Blood Testing</span></h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-3);">Accurate diagnosis is the
+            foundation of effective treatment. We utilize both rapid skin prick testing and specific IgE blood tests to
+            identify exact environmental, seasonal, and pet allergens.</p>
+          <ul class="service-points">
+            <li><strong>Process:</strong> Minimal discomfort, utilizing sterile disposable applicators.</li>
+            <li><strong>Duration:</strong> Results are typically readable within 15-20 minutes for skin tests.</li>
+            <li><strong>Detection:</strong> Pollen, mold, dust mites, animal dander, and insect venom.</li>
+          </ul>
+          <div class="service-note">
+            <strong>Note:</strong> Most insurance plans cover diagnostic allergy testing. We will verify your benefits
+            prior to your appointment.
+          </div>
+        </div>
+        <div style="order: 2;" data-reveal="right">
+          <img src="assets/images/services-page-skin-testing.jpg" alt="Allergy skin testing" class="media-frame">
+        </div>
+      </div>
+    </section>
+
+    <!-- Immunotherapy -->
+    <section class="bg-alt" id="immunotherapy">
+      <div class="container split tight">
+        <div style="order: 1;" data-reveal="left">
+          <img src="assets/images/services-page-immunotherapy-consultation.jpg" alt="Immunotherapy consultation"
+            class="media-frame">
+        </div>
+        <div class="service-copy" style="order: 2;" data-reveal="right">
+          <div class="card-icon" style="margin-bottom: var(--spacing-3);">
+            <i class="ph ph-shield-plus"></i>
+          </div>
+          <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Treatment</span>
+          <h2 style="margin-bottom: var(--spacing-3);">Immuno<span class="serif">therapy</span></h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-3);">Rather than just managing
+            symptoms, immunotherapy retrains your immune system to tolerate allergens. This provides long-term,
+            structural relief from severe allergies and asthma.</p>
+          <ul class="service-points">
+            <li><strong>Subcutaneous (Shots):</strong> The gold standard. Administered on a structured schedule
+              (build-up and maintenance phases).</li>
+            <li><strong>Sublingual (Drops/Tablets):</strong> A convenient at-home alternative for specific allergens.
+            </li>
+            <li><strong>Tracking:</strong> easily monitor your shot schedule via the AllerPure Patient Dashboard.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Food Allergy Management -->
+    <section id="food-allergy">
+      <div class="container split tight">
+        <div class="service-copy" style="order: 1;" data-reveal="left">
+          <div class="card-icon" style="margin-bottom: var(--spacing-3);">
+            <i class="ph ph-bowl-food"></i>
+          </div>
+          <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Ongoing care</span>
+          <h2 style="margin-bottom: var(--spacing-3);">Food Allergy <span class="serif">Management</span></h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-3);">Food allergies require precise
+            diagnosis and careful management. We provide comprehensive care for both children and adults dealing with
+            food sensitivities and severe allergic reactions.</p>
+          <ul class="service-points">
+            <li><strong>Diagnostic Oral Challenges:</strong> Safely conducted in-clinic under direct medical
+              supervision.</li>
+            <li><strong>Dietary Guidance:</strong> Structured elimination diets and nutritional counseling.</li>
+            <li><strong>Action Plans:</strong> Downloadable, personalized anaphylaxis emergency plans available directly
+              in your portal.</li>
+          </ul>
+        </div>
+        <div style="order: 2;" data-reveal="right">
+          <img src="assets/images/services-page-food-allergy-nutrition.jpg" alt="Healthy eating and nutrition"
+            class="media-frame">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLINICAL STANDARDS (NO IMAGES) ==================== -->
+    <section class="bg-alt" id="why-us">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Why Choose AllerPure</span>
+          <h2>Our clinical <span class="serif">standards</span></h2>
+          <p>We combine cutting-edge molecular diagnostics with patient-centered comfort to deliver safe, predictable,
+            and lasting allergy outcomes.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="card" style="align-items: flex-start; text-align: left;" data-reveal>
+            <div class="card-icon"
+              style="background: var(--color-primary-light); color: var(--color-primary); border-radius: 16px;">
+              <i class="ph ph-lightning"></i>
+            </div>
+            <h3>Same-Day Results</h3>
+            <p>Our rapid skin-prick testing provides actionable allergen diagnostic readings in just 15 to 20 minutes
+              during your initial evaluation visit.</p>
+            <span class="pill" style="margin-top: auto;"><i class="ph ph-clock"></i> 15-20 Min Diagnostics</span>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left; --reveal-delay: 100ms;" data-reveal>
+            <div class="card-icon"
+              style="background: var(--color-primary-light); color: var(--color-primary); border-radius: 16px;">
+              <i class="ph ph-shield-check"></i>
+            </div>
+            <h3>Customized Protocols</h3>
+            <p>Every immunotherapy serum and elimination management plan is tailored specifically to your unique
+              component-resolved blood panel profile.</p>
+            <span class="pill" style="margin-top: auto;"><i class="ph ph-user-focus"></i> 100% Tailored Serums</span>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left; --reveal-delay: 200ms;" data-reveal>
+            <div class="card-icon"
+              style="background: var(--color-primary-light); color: var(--color-primary); border-radius: 16px;">
+              <i class="ph ph-device-mobile-camera"></i>
+            </div>
+            <h3>Digital Portal Integration</h3>
+            <p>Track your shot schedules, log symptom flare-ups, reorder sublingual drops, and access emergency action
+              plans securely from your portal.</p>
+            <span class="pill" style="margin-top: auto;"><i class="ph ph-cloud-check"></i> 24/7 Portal Access</span>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left;" data-reveal>
+            <div class="card-icon"
+              style="background: var(--color-primary-light); color: var(--color-primary); border-radius: 16px;">
+              <i class="ph ph-heartbeat"></i>
+            </div>
+            <h3>Pediatric &amp; Adult Safety</h3>
+            <p>Supervised in-clinic oral challenges with dedicated emergency protocols and kid-friendly diagnostic rooms
+              for stress-free visits.</p>
+            <span class="pill" style="margin-top: auto;"><i class="ph ph-first-aid"></i> Board-Certified Care</span>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left; --reveal-delay: 100ms;" data-reveal>
+            <div class="card-icon"
+              style="background: var(--color-primary-light); color: var(--color-primary); border-radius: 16px;">
+              <i class="ph ph-file-text"></i>
+            </div>
+            <h3>Transparent Billing</h3>
+            <p>We verify your insurance coverage ahead of time and provide clear, upfront cost estimates before any
+              diagnostic panel or treatment session.</p>
+            <span class="pill" style="margin-top: auto;"><i class="ph ph-check-circle"></i> In-Network Coverage</span>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left; --reveal-delay: 200ms;" data-reveal>
+            <div class="card-icon"
+              style="background: var(--color-primary-light); color: var(--color-primary); border-radius: 16px;">
+              <i class="ph ph-house-line"></i>
+            </div>
+            <h3>At-Home Sublingual Care</h3>
+            <p>For patients unable to visit the clinic weekly, our custom sublingual drops offer convenient, effective
+              immune retraining directly from home.</p>
+            <span class="pill" style="margin-top: auto;"><i class="ph ph-house"></i> Home Delivery Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-deep">
+      <div class="mesh mesh-1" style="opacity: .16;"></div>
+      <div class="container container-narrow" style="text-align: center; position: relative; z-index: 2;" data-reveal>
+        <span class="eyebrow centered" style="margin-bottom: var(--spacing-3);">Choosing a service</span>
+        <h2 style="margin-bottom: var(--spacing-3);">Not sure which test you <span class="serif">need</span>?</h2>
+        <p class="lead" style="color: rgba(255,255,255,.72); margin-bottom: var(--spacing-5);">
+          Start with a comprehensive evaluation — we review your history, run the right panel,
+          and map out a treatment plan before you commit to anything.
+        </p>
+        <div class="cta-actions">
+          <a href="index.html#book" class="btn btn-light btn-lg">Book an evaluation <i
+              class="ph ph-arrow-right"></i></a>
+          <a href="tel:5551234567" class="btn btn-on-deep btn-lg"><i class="ph ph-phone"></i> (555) 123-4567</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Standard) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: var(--spacing-3);">
+            <i class="ph-fill ph-drop"></i> AllerPure
+          </a>
+          <p>A premium allergy and immunology clinic dedicated to precision diagnostics and compassionate patient care.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+            <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html#testing">Skin &amp; Blood Testing</a>
+            <a href="services.html#immunotherapy">Immunotherapy</a>
+            <a href="services.html#food-allergy">Food Allergies</a>
+            <a href="services.html">Pediatric Care</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <div class="footer-links">
+            <a href="doctors.html">Our Doctors</a>
+            <a href="blog.html">Resources</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Patient Portal</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-links">
+            <a href="contact.html"><i class="ph ph-map-pin"></i> 123 Wellness Blvd, Suite 400<br>Clinical City, MD
+              20000</a>
+            <a href="tel:5551234567"><i class="ph ph-phone"></i> (555) 123-4567</a>
+            <a href="mailto:hello@allerpure.com"><i class="ph ph-envelope"></i> hello@allerpure.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AllerPure Clinic. All rights reserved.</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">HIPAA Notice</a>
+        </nav>
+      </div>
+
+      <div class="footer-watermark" aria-hidden="true">AllerPure</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

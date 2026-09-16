@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard | AllerPure Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    /* Dashboard specific layout */
+    body { background-color: var(--color-bg-alt); }
+
+    /* The portal header is always solid - no hero sits behind it */
+    .header {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom-color: var(--hairline);
+    }
+    
+    /* Header adjusted for dashboard - No Theme Toggle inside clinical dashboard per spec */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - var(--nav-height));
+      padding-top: var(--nav-height);
+    }
+    
+    .dashboard-sidebar {
+      background-color: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      padding: var(--spacing-4) 0;
+      position: sticky;
+      top: var(--nav-height);
+      height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+    }
+    
+    .dashboard-nav-link {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin: 2px var(--spacing-2);
+      padding: 12px var(--spacing-2);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: all var(--transition-fast);
+    }
+    
+    .dashboard-nav-link:hover {
+      background-color: var(--color-bg-alt);
+      color: var(--color-primary);
+    }
+    
+    .dashboard-nav-link.active {
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+      box-shadow: inset 2px 0 0 var(--color-primary);
+    }
+    
+    .dashboard-nav-link i { font-size: 1.25rem; }
+    
+    .dashboard-content {
+      padding: var(--spacing-6);
+    }
+    
+    .dashboard-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .dashboard-pane.active {
+      display: block;
+    }
+    
+    /* Six stat tiles — 3 x 2 on desktop, 2-up at tablet, stacked on phones */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .kpi-card {
+      background: var(--color-surface);
+      padding: var(--spacing-4);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+    .kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    
+    .kpi-icon {
+      width: 48px; height: 48px; border-radius: 15px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .table-container {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+      overflow-x: auto;
+    }
+    
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: var(--spacing-3); border-bottom: 1px solid var(--color-border); }
+    th { color: var(--color-text-subtle); font-weight: 600; font-size: 0.75rem; letter-spacing: .08em; text-transform: uppercase; background: var(--color-bg-alt); }
+    tbody tr { transition: background-color var(--transition-fast); }
+    tbody tr:hover { background: var(--tint); }
+    tr:last-child td { border-bottom: none; }
+    
+    .status-badge {
+      padding: 4px 8px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600;
+    }
+    .status-success { background: rgba(18,160,111,.14); color: #0E7A55; }
+    .status-pending { background: rgba(217,148,43,.16); color: #9A6415; }
+    .status-alert { background: rgba(220,91,79,.14); color: #B23F34; }
+    [data-theme="dark"] .status-success { color: #4FD9A6; }
+    [data-theme="dark"] .status-pending { color: #F0B75C; }
+    [data-theme="dark"] .status-alert { color: #FF9086; }
+    
+    /* Portal bar spans the full width; brand cluster keeps the hamburger before the logo */
+    .dash-header-bar { max-width: 100%; padding-inline: var(--spacing-4); }
+    .dash-brand { display: flex; align-items: center; gap: var(--spacing-2); min-width: 0; }
+    .dash-brand .logo { min-width: 0; }
+    .dash-sidebar-header { display: none; }
+
+    /* Header user avatar */
+    .dash-user {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+      border: 1px solid var(--color-border);
+      transition: transform var(--transition-fast), background-color var(--transition-fast);
+    }
+    .dash-user:hover { transform: translateY(-1px); background: var(--tint); color: var(--color-primary); }
+
+    /* ---------- Overview: welcome banner ---------- */
+    .welcome-banner {
+      position: relative;
+      overflow: hidden;
+      background: var(--grad-deep);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-5);
+      margin-bottom: var(--spacing-4);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-4);
+    }
+    .welcome-banner::after {
+      content: '';
+      position: absolute;
+      inset-inline-end: -80px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(111, 208, 194, .28), transparent 65%);
+      pointer-events: none;
+    }
+    .welcome-copy { position: relative; z-index: 1; max-width: 46ch; }
+    .welcome-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: var(--spacing-2);
+    }
+    .welcome-banner h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 10px; color: #fff; }
+    .welcome-banner p { color: rgba(255, 255, 255, .76); font-size: 0.9375rem; margin: 0; }
+    .welcome-actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; }
+
+    /* ---------- Overview: panels ---------- */
+    .dash-columns {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--spacing-4);
+      margin-bottom: var(--spacing-4);
+      align-items: start;
+    }
+    .panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: var(--spacing-4);
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-3);
+    }
+    .panel-head h3 { font-size: 1.0625rem; margin: 0; }
+    .panel-head a { font-size: 0.8125rem; color: var(--color-primary); font-weight: 500; }
+
+    .timeline { list-style: none; padding: 0; margin: 0; }
+    .timeline li {
+      display: flex;
+      gap: var(--spacing-3);
+      padding-bottom: var(--spacing-3);
+      position: relative;
+    }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 17px;
+      top: 38px;
+      bottom: 4px;
+      width: 1px;
+      background: var(--color-border);
+    }
+    .timeline-dot {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.125rem;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+    .timeline-body { min-width: 0; }
+    .timeline-body strong { display: block; font-size: 0.9375rem; }
+    .timeline-body span { font-size: 0.8125rem; color: var(--color-text-muted); }
+
+    .forecast-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-2);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.875rem;
+    }
+    .forecast-row:last-child { border-bottom: none; }
+    .forecast-meter { width: 96px; height: 6px; border-radius: var(--radius-full); background: var(--color-border); overflow: hidden; flex-shrink: 0; }
+    .forecast-meter span { display: block; height: 100%; border-radius: inherit; }
+
+    .care-team-row { display: flex; align-items: center; gap: var(--spacing-2); padding: 10px 0; }
+    .care-team-row + .care-team-row { border-top: 1px solid var(--color-border); }
+    .care-team-row img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .care-team-row strong { display: block; font-size: 0.9375rem; }
+    .care-team-row span { font-size: 0.8125rem; color: var(--color-text-muted); }
+
+    @media (max-width: 1200px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .dash-columns { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Phones — tables stop scrolling sideways and stack into labelled cards */
+    @media (max-width: 700px) {
+      .table-container {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+      }
+      .table-container table,
+      .table-container tbody,
+      .table-container tr,
+      .table-container td { display: block; width: 100%; }
+      .table-container thead { display: none; }
+
+      .table-container tr {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: var(--spacing-1) var(--spacing-3);
+        margin-bottom: var(--spacing-2);
+      }
+      .table-container tbody tr:hover { background: var(--color-surface); }
+      .table-container tr:last-child { margin-bottom: 0; }
+
+      .table-container td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-2);
+        padding: 10px 0;
+        border-bottom: 1px solid var(--color-border);
+        font-size: 0.875rem;
+        text-align: end;
+      }
+      .table-container td:last-child { border-bottom: none; }
+      .table-container td::before {
+        content: attr(data-label);
+        flex-shrink: 0;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--color-text-subtle);
+        text-align: start;
+      }
+      /* First cell reads as the card title */
+      .table-container td:first-child {
+        font-size: 1rem;
+        font-weight: 600;
+        padding-top: var(--spacing-2);
+      }
+      .table-container td:first-child::before { display: none; }
+      .table-container td:first-child { justify-content: flex-start; text-align: start; }
+    }
+
+    @media (max-width: 1024px) {
+      /* Sidebar becomes an off-canvas drawer opened from the header hamburger */
+      .dashboard-layout { grid-template-columns: 1fr; }
+      .dashboard-content { padding: var(--spacing-4); }
+
+      .dashboard-sidebar {
+        position: fixed;
+        top: 0;
+        inset-inline-start: 0;
+        z-index: 1002;
+        width: 300px;
+        max-width: 84%;
+        height: 100dvh;
+        padding: var(--spacing-3) 0 var(--spacing-4);
+        border-right: none;
+        border-inline-end: 1px solid var(--color-border);
+        box-shadow: var(--shadow-hover);
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: transform 0.42s var(--ease-out-expo), visibility 0.42s;
+      }
+      [dir="rtl"] .dashboard-sidebar { transform: translateX(100%); }
+      .dashboard-sidebar.active,
+      [dir="rtl"] .dashboard-sidebar.active { transform: translateX(0); visibility: visible; }
+
+      .dash-sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-2);
+        height: var(--nav-height);
+        padding: 0 var(--spacing-3);
+        margin-bottom: var(--spacing-2);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .dashboard-nav-link { margin: 2px var(--spacing-2); }
+    }
+
+    @media (min-width: 1025px) {
+      .dash-hamburger { display: none; }
+    }
+
+    /* Small phones (~360px) — tighter bar, hamburger pulled toward the edge */
+    @media (max-width: 420px) {
+      .dash-header-bar { padding-inline: var(--spacing-1); }
+      .dash-brand { gap: 4px; }
+      .dash-hamburger { margin-inline-start: -4px; }
+      .nav-actions { gap: 2px; }
+
+      .logo { font-size: 1.125rem; gap: 7px; }
+      .logo i { width: 28px; height: 28px; border-radius: 9px; font-size: 0.9375rem; }
+
+      .header .icon-btn,
+      .dash-user { width: 34px; height: 34px; }
+      .header .icon-btn { font-size: 1rem; }
+      .dash-user { font-size: 1.0625rem; }
+
+      .dashboard-content { padding: var(--spacing-3) var(--spacing-2); }
+      .dashboard-sidebar { width: 280px; max-width: 86%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container dash-header-bar">
+      <div class="dash-brand">
+        <button class="icon-btn dash-hamburger" aria-label="Open portal menu" aria-controls="dash-sidebar" aria-expanded="false">
+          <i class="ph ph-list"></i>
+        </button>
+        <a href="index.html" class="logo"><i class="ph-fill ph-drop"></i> AllerPure</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="#settings" class="dash-user" aria-label="Profile settings" title="Profile settings">
+          <i class="ph ph-user"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar drawer overlay (tablet & mobile) -->
+  <div class="mobile-drawer-overlay dash-drawer-overlay"></div>
+
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar" id="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <span style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">Menu</span>
+        <button class="icon-btn dash-drawer-close" aria-label="Close portal menu">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <a href="#overview" class="dashboard-nav-link active"><i class="ph ph-squares-four"></i> Overview</a>
+      <a href="#appointments" class="dashboard-nav-link"><i class="ph ph-calendar-check"></i> Appointments</a>
+      <a href="#immunotherapy" class="dashboard-nav-link"><i class="ph ph-syringe"></i> Shot Schedule</a>
+      <a href="#results" class="dashboard-nav-link"><i class="ph ph-file-text"></i> Test Results</a>
+      <a href="#actionplans" class="dashboard-nav-link"><i class="ph ph-shield-warning"></i> Action Plans</a>
+      <a href="#billing" class="dashboard-nav-link"><i class="ph ph-credit-card"></i> Billing</a>
+      <a href="#settings" class="dashboard-nav-link"><i class="ph ph-gear"></i> Settings</a>
+      <a href="index.html" class="dashboard-nav-link" style="color: var(--color-error); margin-top: var(--spacing-4);"><i class="ph ph-sign-out"></i> Logout</a>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="dashboard-content">
+      
+      <!-- Pane: Overview -->
+      <div id="overview" class="dashboard-pane active">
+
+        <!-- Welcome banner -->
+        <section class="welcome-banner">
+          <div class="welcome-copy">
+            <span class="welcome-date"><i class="ph ph-calendar-blank"></i> Wednesday, 16 September 2025</span>
+            <h1>Good morning, Jane!</h1>
+            <p>Your immunotherapy is on track and your next shot is in 4 weeks. Two new test results
+              are ready to review below.</p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn btn-light" onclick="alert('Booking modal would open here.')">
+              <i class="ph ph-calendar-plus"></i> Book appointment
+            </button>
+            <button class="btn btn-on-deep" onclick="alert('Secure message composer would open here.')">
+              <i class="ph ph-chat-circle-dots"></i> Message care team
+            </button>
+          </div>
+        </section>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #eff6ff; color: #3b82f6;"><i class="ph ph-calendar"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Next Appointment</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">Oct 15, 2025 at 2:00 PM</h3>
+              <p style="font-size: 0.75rem; color: var(--color-primary); margin: 0;">Allergy Shot (Maintenance)</p>
+            </div>
+          </div>
+          
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #f0fdf4; color: #16a34a;"><i class="ph ph-shield-check"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Immunotherapy Plan</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">Maintenance Phase</h3>
+              <p style="font-size: 0.75rem; color: #16a34a; margin: 0;">On track (12/12 doses)</p>
+            </div>
+          </div>
+          
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #fef2f2; color: #dc2626;"><i class="ph ph-credit-card"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Outstanding Balance</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">$45.00</h3>
+              <a href="#billing" onclick="document.querySelector('a[href=\'#billing\']').click()" style="font-size: 0.75rem; color: var(--color-primary); margin: 0; text-decoration: underline;">Pay Now</a>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #fff7ed; color: #d9842b;"><i class="ph ph-flask"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">New Test Results</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">2 ready</h3>
+              <a href="#results" onclick="document.querySelector('a[href=\'#results\']').click()" style="font-size: 0.75rem; color: var(--color-primary); margin: 0; text-decoration: underline;">Review now</a>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #f5f3ff; color: #7c5cd6;"><i class="ph ph-chart-line-up"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Symptom Score</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">2.1 / 10</h3>
+              <p style="font-size: 0.75rem; color: #16a34a; margin: 0;">Down 38% since January</p>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #fef2f2; color: #dc2626;"><i class="ph ph-first-aid-kit"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">EpiPen Expiry</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">Nov 28, 2025</h3>
+              <a href="#actionplans" onclick="document.querySelector('a[href=\'#actionplans\']').click()" style="font-size: 0.75rem; color: var(--color-primary); margin: 0; text-decoration: underline;">Request refill</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schedule + allergen forecast -->
+        <div class="dash-columns">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>What's coming up</h3>
+              <a href="#appointments" onclick="document.querySelector('a[href=\'#appointments\']').click()">View all</a>
+            </div>
+            <ul class="timeline">
+              <li>
+                <div class="timeline-dot"><i class="ph ph-syringe"></i></div>
+                <div class="timeline-body">
+                  <strong>Immunotherapy shot — Vial #4</strong>
+                  <span>Oct 15, 2025 · 2:00 PM · Dr. Michael Chen</span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-dot"><i class="ph ph-clipboard-text"></i></div>
+                <div class="timeline-body">
+                  <strong>Six-month progress review</strong>
+                  <span>Nov 03, 2025 · 10:30 AM · Dr. Sarah Jenkins</span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-dot"><i class="ph ph-pill"></i></div>
+                <div class="timeline-body">
+                  <strong>Epinephrine auto-injector expires</strong>
+                  <span>Nov 28, 2025 · request a refill beforehand</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Today's allergen forecast</h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Your area</span>
+            </div>
+            <div class="forecast-row">
+              <span>Tree pollen</span>
+              <div class="forecast-meter"><span style="width: 32%; background: var(--color-success);"></span></div>
+            </div>
+            <div class="forecast-row">
+              <span>Grass pollen</span>
+              <div class="forecast-meter"><span style="width: 68%; background: #d9842b;"></span></div>
+            </div>
+            <div class="forecast-row">
+              <span>Ragweed</span>
+              <div class="forecast-meter"><span style="width: 88%; background: var(--color-error);"></span></div>
+            </div>
+            <div class="forecast-row">
+              <span>Mold spores</span>
+              <div class="forecast-meter"><span style="width: 24%; background: var(--color-success);"></span></div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin: var(--spacing-2) 0 0;">
+              Ragweed is high today — keep your antihistamine on hand and windows closed in the afternoon.
+            </p>
+          </section>
+        </div>
+
+        <!-- Recent activity + care team -->
+        <div class="dash-columns">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Recent activity</h3>
+            </div>
+            <ul class="timeline">
+              <li>
+                <div class="timeline-dot" style="background: rgba(18,160,111,.14); color: #0E7A55;"><i class="ph ph-check-circle"></i></div>
+                <div class="timeline-body">
+                  <strong>Shot administered — no reaction reported</strong>
+                  <span>Sep 15, 2025</span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-dot"><i class="ph ph-file-text"></i></div>
+                <div class="timeline-body">
+                  <strong>Specific IgE panel results uploaded</strong>
+                  <span>Sep 12, 2025 · 2 new documents</span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-dot" style="background: rgba(220,91,79,.14); color: #B23F34;"><i class="ph ph-receipt"></i></div>
+                <div class="timeline-body">
+                  <strong>Invoice #4821 issued — $45.00 outstanding</strong>
+                  <span>Sep 15, 2025</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Your care team</h3>
+              <a href="doctors.html">All specialists</a>
+            </div>
+            <div class="care-team-row">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=120&h=120" alt="Dr. Michael Chen" loading="lazy">
+              <div>
+                <strong>Dr. Michael Chen</strong>
+                <span>Immunotherapy Director</span>
+              </div>
+            </div>
+            <div class="care-team-row">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=120&h=120" alt="Dr. Sarah Jenkins" loading="lazy">
+              <div>
+                <strong>Dr. Sarah Jenkins</strong>
+                <span>Chief of Allergy</span>
+              </div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin: var(--spacing-2) 0 0;">
+              Clinical questions are answered within one business day.
+            </p>
+          </section>
+        </div>
+
+      </div>
+      
+      <!-- Pane: Appointments -->
+      <div id="appointments" class="dashboard-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
+          <h2 style="font-size: 1.5rem;">Appointments</h2>
+          <button class="btn btn-primary" onclick="alert('Booking modal would open here.')"><i class="ph ph-plus"></i> Book New</button>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date & Time</th>
+                <th>Type</th>
+                <th>Provider</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Date & Time">Oct 15, 2025 • 2:00 PM</td>
+                <td data-label="Type">Immunotherapy Shot</td>
+                <td data-label="Provider">Dr. Michael Chen</td>
+                <td data-label="Status"><span class="status-badge status-pending">Upcoming</span></td>
+                <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.75rem;">Reschedule</button></td>
+              </tr>
+              <tr>
+                <td data-label="Date & Time">Sep 15, 2025 • 2:00 PM</td>
+                <td data-label="Type">Immunotherapy Shot</td>
+                <td data-label="Provider">Nurse Practitioner</td>
+                <td data-label="Status"><span class="status-badge status-success">Completed</span></td>
+                <td data-label="Actions">-</td>
+              </tr>
+              <tr>
+                <td data-label="Date & Time">Aug 10, 2025 • 10:00 AM</td>
+                <td data-label="Type">Comprehensive Skin Panel</td>
+                <td data-label="Provider">Dr. Sarah Jenkins</td>
+                <td data-label="Status"><span class="status-badge status-success">Completed</span></td>
+                <td data-label="Actions">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pane: Shot Schedule -->
+      <div id="immunotherapy" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">Immunotherapy Schedule</h2>
+        <div class="card" style="text-align: left; align-items: stretch; margin-bottom: var(--spacing-4);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-3);">
+            <div>
+              <h3 style="margin: 0;">Dust Mite & Pollen Subcutaneous Plan</h3>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem;">Started: Jan 15, 2025</p>
+            </div>
+            <span class="status-badge status-success">Maintenance Phase</span>
+          </div>
+          
+          <div style="background: var(--color-bg-alt); padding: var(--spacing-3); border-radius: var(--radius-md); margin-bottom: var(--spacing-4);">
+            <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 8px;">
+              <span>Adherence (Last 6 Months)</span>
+              <strong>100%</strong>
+            </div>
+            <div style="height: 8px; background: var(--color-border); border-radius: var(--radius-full); overflow: hidden;">
+              <div style="height: 100%; width: 100%; background: var(--color-success);"></div>
+            </div>
+          </div>
+          
+          <h4>Recent & Upcoming Doses</h4>
+          <ul style="margin-top: var(--spacing-2); list-style: none; padding: 0;">
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between;">
+              <span><i class="ph-fill ph-check-circle" style="color: var(--color-success); margin-right: 8px;"></i> Sep 15, 2025</span>
+              <span style="color: var(--color-text-muted); font-size: 0.875rem;">Vial #4 (Maintenance)</span>
+            </li>
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between;">
+              <span><i class="ph-fill ph-circle" style="color: var(--color-primary); margin-right: 8px;"></i> Oct 15, 2025</span>
+              <span style="color: var(--color-text-muted); font-size: 0.875rem;">Vial #4 (Maintenance) - Upcoming</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Pane: Test Results -->
+      <div id="results" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">Test Result History</h2>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Test Type</th>
+                <th>Provider</th>
+                <th>Status</th>
+                <th>Report</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Date">Aug 10, 2025</td>
+                <td data-label="Test Type">Comprehensive Aeroallergen Skin Panel</td>
+                <td data-label="Provider">Dr. Sarah Jenkins</td>
+                <td data-label="Status"><span class="status-badge status-success">Reviewed</span></td>
+                <td data-label="Report"><button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.75rem;"><i class="ph ph-download-simple"></i> PDF</button></td>
+              </tr>
+              <tr>
+                <td data-label="Date">Feb 05, 2024</td>
+                <td data-label="Test Type">Specific IgE Blood Test (Food Panel)</td>
+                <td data-label="Provider">Dr. Michael Chen</td>
+                <td data-label="Status"><span class="status-badge status-success">Reviewed</span></td>
+                <td data-label="Report"><button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.75rem;"><i class="ph ph-download-simple"></i> PDF</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Pane: Action Plans -->
+      <div id="actionplans" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">Action Plans</h2>
+        
+        <div class="card-grid">
+          <div class="card" style="align-items: flex-start; text-align: left;">
+            <div style="width: 48px; height: 48px; background: #fee2e2; color: #dc2626; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--spacing-3);">
+              <i class="ph ph-warning-octagon"></i>
+            </div>
+            <h3 style="margin-bottom: 8px;">Anaphylaxis Emergency Plan</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Detailed emergency protocol for severe peanut allergy exposure.</p>
+            <div style="display: flex; gap: 8px; width: 100%; margin-top: auto;">
+              <button class="btn btn-primary" style="flex: 1; padding: 8px;"><i class="ph ph-eye"></i> View</button>
+              <button class="btn btn-outline" style="padding: 8px;"><i class="ph ph-download-simple"></i></button>
+            </div>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left;">
+            <div style="width: 48px; height: 48px; background: #fff7ed; color: #d9842b; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--spacing-3);">
+              <i class="ph ph-wind"></i>
+            </div>
+            <h3 style="margin-bottom: 8px;">Asthma Action Plan</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Green, yellow and red zone guidance with inhaler dosing and when to seek urgent care.</p>
+            <div style="display: flex; gap: 8px; width: 100%; margin-top: auto;">
+              <button class="btn btn-primary" style="flex: 1; padding: 8px;"><i class="ph ph-eye"></i> View</button>
+              <button class="btn btn-outline" style="padding: 8px;"><i class="ph ph-download-simple"></i></button>
+            </div>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left;">
+            <div style="width: 48px; height: 48px; background: #eff6ff; color: #3b82f6; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--spacing-3);">
+              <i class="ph ph-flower-tulip"></i>
+            </div>
+            <h3 style="margin-bottom: 8px;">Seasonal Allergy Plan</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Pre-season medication schedule and exposure control steps for pollen and dust mites.</p>
+            <div style="display: flex; gap: 8px; width: 100%; margin-top: auto;">
+              <button class="btn btn-primary" style="flex: 1; padding: 8px;"><i class="ph ph-eye"></i> View</button>
+              <button class="btn btn-outline" style="padding: 8px;"><i class="ph ph-download-simple"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pane: Billing -->
+      <div id="billing" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">Billing & Invoices</h2>
+        <div class="card" style="text-align: left; align-items: stretch; margin-bottom: var(--spacing-4); border: 2px solid var(--color-error);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h3 style="margin: 0; color: var(--color-error);">Amount Due: $45.00</h3>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin-top: 4px;">Copay for Visit on Sep 15, 2025</p>
+            </div>
+            <!-- PayPal / Stripe button placeholder -->
+            <button class="btn btn-primary">Pay Now</button>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Date">Sep 15, 2025</td>
+                <td data-label="Description">Immunotherapy Shot Administration</td>
+                <td data-label="Amount">$45.00</td>
+                <td data-label="Status"><span class="status-badge status-alert">Unpaid</span></td>
+              </tr>
+              <tr>
+                <td data-label="Date">Aug 10, 2025</td>
+                <td data-label="Description">Diagnostic Testing Consultation</td>
+                <td data-label="Amount">$150.00</td>
+                <td data-label="Status"><span class="status-badge status-success">Paid</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Pane: Settings -->
+      <div id="settings" class="dashboard-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4); flex-wrap: wrap; gap: var(--spacing-3);">
+          <div>
+            <h2 style="font-size: 1.5rem; margin: 0;">Profile Settings</h2>
+            <p style="color: var(--color-text-muted); margin-top: 4px; font-size: 0.875rem;">Manage your personal details, clinical notification preferences, and portal security.</p>
+          </div>
+          <span class="status-badge status-success" style="padding: 6px 14px; font-size: 0.875rem;">
+            <i class="ph ph-shield-check"></i> Patient Verified
+          </span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-5);">
+
+          <!-- Personal Information Form Card -->
+          <div class="card" style="align-items: stretch; text-align: left; padding: var(--spacing-5);">
+            <h3 style="margin-bottom: var(--spacing-4); font-size: 1.125rem; display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-user" style="color: var(--color-primary);"></i> Personal Information
+            </h3>
+
+            <form class="validate-form" onsubmit="event.preventDefault(); alert('Profile information saved successfully!');">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-4);">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-control" name="fullname" value="Jane Doe" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" name="email" value="jane.doe@example.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" name="phone" value="(555) 234-5678" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Date of Birth</label>
+                  <input type="date" class="form-control" name="dob" value="1992-05-14" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Primary Allergist</label>
+                  <input type="text" class="form-control" name="doctor" value="Dr. Sarah Jenkins, MD" readonly style="opacity: 0.85; background: var(--color-bg-alt);">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Emergency Contact</label>
+                  <input type="text" class="form-control" name="emergency_contact" value="John Doe (Spouse) - (555) 987-6543">
+                </div>
+              </div>
+
+              <div style="margin-top: var(--spacing-4); text-align: center;">
+                <button type="submit" class="btn btn-primary">
+                  <i class="ph ph-check"></i> Save Personal Details
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Notification Preferences Card -->
+          <div class="card" style="align-items: stretch; text-align: left; padding: var(--spacing-5);">
+            <h3 style="margin-bottom: var(--spacing-4); font-size: 1.125rem; display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-bell" style="color: var(--color-primary);"></i> Notification Preferences
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+              <label style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3); background: var(--color-bg-alt); border-radius: var(--radius-sm); cursor: pointer;">
+                <div>
+                  <strong style="display: block; font-size: 0.9375rem;">Appointment Reminders</strong>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted);">Receive SMS and email reminders 24h before your scheduled visit.</span>
+                </div>
+                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--color-primary);">
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3); background: var(--color-bg-alt); border-radius: var(--radius-sm); cursor: pointer;">
+                <div>
+                  <strong style="display: block; font-size: 0.9375rem;">Lab &amp; Test Results Alerts</strong>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted);">Notify me immediately when new IgE panel results are uploaded.</span>
+                </div>
+                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--color-primary);">
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3); background: var(--color-bg-alt); border-radius: var(--radius-sm); cursor: pointer;">
+                <div>
+                  <strong style="display: block; font-size: 0.9375rem;">Shot Schedule &amp; Immunotherapy Alerts</strong>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted);">Weekly reminders to maintain your allergy shot build-up schedule.</span>
+                </div>
+                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--color-primary);">
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3); background: var(--color-bg-alt); border-radius: var(--radius-sm); cursor: pointer;">
+                <div>
+                  <strong style="display: block; font-size: 0.9375rem;">Pollen Count &amp; Seasonal Warnings</strong>
+                  <span style="font-size: 0.8125rem; color: var(--color-text-muted);">Get local high-pollen count alerts during peak allergy seasons.</span>
+                </div>
+                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--color-primary);">
+              </label>
+            </div>
+          </div>
+
+          <!-- Security & Password Card -->
+          <div class="card" style="align-items: stretch; text-align: left; padding: var(--spacing-5);">
+            <h3 style="margin-bottom: var(--spacing-4); font-size: 1.125rem; display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-shield-check" style="color: var(--color-primary);"></i> Security &amp; Password
+            </h3>
+
+            <form class="validate-form" onsubmit="event.preventDefault(); alert('Password updated successfully!');">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-4);">
+                <div class="form-group">
+                  <label class="form-label">Current Password</label>
+                  <input type="password" class="form-control" name="current_password" placeholder="••••••••">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">New Password</label>
+                  <input type="password" class="form-control" name="new_password" placeholder="••••••••">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Confirm New Password</label>
+                  <input type="password" class="form-control" name="confirm_password" placeholder="••••••••">
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--spacing-4); flex-wrap: wrap; gap: var(--spacing-3);">
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--color-text-muted);">
+                  <i class="ph ph-check-circle" style="color: var(--color-success); font-size: 1.25rem;"></i>
+                  <span>Two-Factor Authentication (2FA) is <strong>Enabled</strong></span>
+                </div>
+
+                <button type="submit" class="btn btn-outline">
+                  <i class="ph ph-lock-key"></i> Update Password
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

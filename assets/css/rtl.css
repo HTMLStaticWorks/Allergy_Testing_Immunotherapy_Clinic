@@ -1,0 +1,198 @@
+/*
+================================================================================
+AllerPure — RTL Stylesheet
+Loaded after style.css; only takes effect when dir="rtl" is set on <html>.
+Most layout uses flex/grid gaps, so only direction-bound rules need flipping.
+================================================================================
+*/
+
+[dir="rtl"], .rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* --- Mobile drawer slides in from the left in RTL --- */
+[dir="rtl"] .mobile-drawer,
+.rtl .mobile-drawer {
+  right: auto;
+  left: -100%;
+  border-left: none;
+  border-right: 1px solid var(--color-border);
+  transition: left 0.42s var(--ease-out-expo);
+}
+
+[dir="rtl"] .mobile-drawer.active,
+.rtl .mobile-drawer.active {
+  left: 0;
+}
+
+[dir="rtl"] .drawer-nav-link::after,
+.rtl .drawer-nav-link::after {
+  content: '\2190'; /* left arrow */
+}
+
+/* --- Forms --- */
+[dir="rtl"] .form-group,
+[dir="rtl"] .checkbox-group,
+[dir="rtl"] .booking-panel,
+.rtl .form-group,
+.rtl .checkbox-group,
+.rtl .booking-panel {
+  text-align: right;
+}
+
+/* --- Directional icons: flip arrows, keep symbolic icons upright --- */
+[dir="rtl"] .btn i.ph-arrow-right,
+[dir="rtl"] .btn i.ph-arrow-left,
+[dir="rtl"] .btn i.ph-caret-right,
+[dir="rtl"] .link-arrow i,
+[dir="rtl"] .drawer-nav-link i,
+.rtl .btn i.ph-arrow-right,
+.rtl .btn i.ph-arrow-left,
+.rtl .btn i.ph-caret-right,
+.rtl .link-arrow i {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .btn:hover i.ph-arrow-right,
+.rtl .btn:hover i.ph-arrow-right {
+  transform: scaleX(-1) translateX(3px);
+}
+
+[dir="rtl"] .link-arrow:hover i,
+.rtl .link-arrow:hover i {
+  transform: scaleX(-1) translateX(4px);
+}
+
+/* --- Eyebrow rule sits on the correct side --- */
+[dir="rtl"] .eyebrow::before,
+.rtl .eyebrow::before {
+  order: 1;
+}
+
+/* --- Quote mark moves to the opposite corner --- */
+[dir="rtl"] .quote-card::before,
+.rtl .quote-card::before {
+  right: auto;
+  left: 18px;
+}
+
+/* --- Stat divider --- */
+[dir="rtl"] .stat + .stat::before,
+.rtl .stat + .stat::before {
+  left: auto;
+  right: 0;
+}
+
+/* --- Explorer option tick --- */
+[dir="rtl"] .option.selected::after,
+.rtl .option.selected::after {
+  right: auto;
+  left: 10px;
+}
+
+/* --- Dashboard sidebar active indicator --- */
+[dir="rtl"] .dashboard-nav-link.active,
+.rtl .dashboard-nav-link.active {
+  box-shadow: inset -2px 0 0 var(--color-primary);
+}
+
+/* --- Footer --- */
+[dir="rtl"] .footer-grid,
+.rtl .footer-grid {
+  text-align: right;
+}
+
+/* --- Marquee runs the other way --- */
+[dir="rtl"] .marquee-track,
+.rtl .marquee-track {
+  animation-direction: reverse;
+}
+
+/* --- Sheen sweep on buttons --- */
+[dir="rtl"] .btn::after,
+.rtl .btn::after {
+  transform: translateX(120%);
+}
+[dir="rtl"] .btn:hover::after,
+.rtl .btn:hover::after {
+  transform: translateX(-120%);
+}
+
+/* --- Split sections: centered copy keeps its centring, lists read right-to-left --- */
+[dir="rtl"] .split-copy,
+[dir="rtl"] .copy-center,
+.rtl .split-copy,
+.rtl .copy-center {
+  text-align: center;
+}
+
+[dir="rtl"] .split-copy .checklist,
+[dir="rtl"] .copy-center .checklist,
+.rtl .split-copy .checklist,
+.rtl .copy-center .checklist {
+  text-align: right;
+}
+
+/* Float chip hangs off the opposite edge of the media frame */
+[dir="rtl"] .split-media .float-chip,
+.rtl .split-media .float-chip {
+  right: auto !important;
+  left: -24px;
+}
+
+/* Card copy stays centered, tag chip included */
+[dir="rtl"] .card,
+[dir="rtl"] .quote-grid .quote-card,
+[dir="rtl"] .step,
+.rtl .card,
+.rtl .quote-grid .quote-card,
+.rtl .step {
+  text-align: center;
+}
+
+/* Step number badge sits on the opposite corner of the photo */
+[dir="rtl"] .step-num,
+.rtl .step-num {
+  right: auto;
+  left: 4px;
+}
+
+/* --- Auth pages --- */
+
+/* Password reveal button moves to the opposite edge of the field */
+[dir="rtl"] .password-input-wrap .form-control,
+.rtl .password-input-wrap .form-control {
+  padding-right: 16px;
+  padding-left: 46px;
+}
+
+[dir="rtl"] .toggle-password-btn,
+.rtl .toggle-password-btn {
+  right: auto;
+  left: 14px;
+}
+
+/* Latin-only credentials stay typed left-to-right, aligned with the RTL form */
+[dir="rtl"] .auth-card input[type="email"],
+[dir="rtl"] .auth-card input[type="password"],
+.rtl .auth-card input[type="email"],
+.rtl .auth-card input[type="password"] {
+  direction: ltr;
+  text-align: right;
+}
+
+/* Card copy is centered; form fields and the consent row read right-to-left */
+[dir="rtl"] .auth-card,
+.rtl .auth-card { text-align: center; }
+
+[dir="rtl"] .auth-card .form-group,
+[dir="rtl"] .auth-consent,
+.rtl .auth-card .form-group,
+.rtl .auth-consent { text-align: right; }
+
+/* Brand lockup and social buttons keep their icon on the leading edge */
+[dir="rtl"] .auth-header .logo,
+[dir="rtl"] .social-btn,
+.rtl .auth-header .logo,
+.rtl .social-btn { flex-direction: row-reverse; }
