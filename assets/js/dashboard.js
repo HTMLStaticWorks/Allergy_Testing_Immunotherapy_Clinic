@@ -99,7 +99,12 @@ function initSidebarDrawer() {
     document.body.style.overflow = '';
   };
 
-  hamburger.addEventListener('click', openDrawer);
+  // The drawer sits below the header, so the hamburger is the visible open
+  // AND close control - clicking it again must dismiss the panel.
+  hamburger.addEventListener('click', () => {
+    if (sidebar.classList.contains('active')) closeDrawer();
+    else openDrawer();
+  });
   closeBtn?.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
 

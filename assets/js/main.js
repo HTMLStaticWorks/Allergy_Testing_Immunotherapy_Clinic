@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRTLToggle();
   initMobileDrawer();
   initHeaderScroll();
+  initBackToTop();
   initReveal();
   initCounters();
   initAccordion();
@@ -599,4 +600,23 @@ function initPasswordToggle() {
       }
     });
   });
+}
+
+/* ==========================================================================
+   Back to Top
+   ========================================================================== */
+function initBackToTop() {
+  const btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+
+  const onScroll = () => {
+    btn.classList.toggle('visible', window.scrollY > 600);
+  };
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+  });
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
