@@ -1014,9 +1014,11 @@ input[type="month"].form-control::-webkit-calendar-picker-indicator:hover { opac
    --logo-height and fills from --logo-color, which nothing else overrides. */
 :root {
   --logo-height: 40px;
-  /* Fixed brand teal — the lockup never recolors for theme, hover or hero state */
+  /* Fixed brand teal — the lockup never recolors for hover or hero state */
   --logo-color: var(--brand-500);
 }
+/* Dark mode: lighter teal keeps the lockup legible on dark surfaces */
+[data-theme="dark"] { --logo-color: var(--brand-300); }
 
 .logo {
   --logo-shield: var(--logo-color);
@@ -2253,4 +2255,36 @@ input[type="range"]::-moz-range-thumb {
 /* True mobile: the footer stacks one column per row */
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Inner-page photo heroes ---------- */
+.hero-page { min-height: 0; padding-top: calc(var(--nav-height) + var(--spacing-12)); padding-bottom: var(--spacing-12); }
+.hero-page .hero-bg { object-position: center 40%; }
+.hero-image .eyebrow { color: var(--brand-300); }
+.hero-image .eyebrow::before, .hero-image .eyebrow::after { background: var(--brand-300); }
+
+/* Home 2: photo washed out by a page-colored scrim so the split hero stays light */
+.hero-soft-photo .hero-bg { filter: saturate(.8); }
+.hero-soft-photo .hero-scrim {
+  background: linear-gradient(100deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 92%, transparent) 45%, color-mix(in srgb, var(--color-bg) 80%, transparent) 100%);
+}
+.hero-soft-photo .mesh { z-index: 1; }
+
+/* ---------- Services page: image hover + CTA ---------- */
+.service-media { display: block; transition: transform .45s ease, box-shadow .45s ease; }
+.service-media img { display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .45s ease; }
+.service-media::before {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, transparent 55%, rgba(4, 29, 32, .35));
+  opacity: 0; transition: opacity .45s ease;
+}
+.service-media:hover, .service-media:focus-visible { transform: translateY(-6px); box-shadow: 0 24px 50px -18px rgba(13, 92, 99, .45); }
+.service-media:hover img, .service-media:focus-visible img { transform: scale(1.06); filter: saturate(1.08); }
+.service-media:hover::before, .service-media:focus-visible::before { opacity: 1; }
+.service-cta { margin-top: var(--spacing-4); }
+.service-cta .btn i { transition: transform .25s ease; }
+.service-cta .btn:hover i { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) {
+  .service-media, .service-media img { transition: none; }
+  .service-media:hover, .service-media:hover img { transform: none; }
 }

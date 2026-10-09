@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
-<body>
+<body class="has-photo-hero">
 
   <!-- Header -->
   <header class="header">
@@ -86,9 +86,9 @@
 
   <main>
     <!-- Page Hero -->
-    <section class="hero" style="padding-bottom: var(--spacing-8);">
-      <div class="mesh mesh-1"></div>
-      <div class="mesh mesh-2"></div>
+    <section class="hero hero-image hero-page">
+      <img class="hero-bg" src="assets/images/hero-blog.jpg" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="hero-scrim"></div>
       <div class="grid-overlay"></div>
 
       <div class="container">
@@ -103,6 +103,12 @@
 
     <section>
       <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Latest articles</span>
+          <h2>Insights from our <span class="serif">allergists</span></h2>
+          <p>Practical, evidence-based guidance on seasonal triggers, food allergies, immunotherapy and allergy care for children.</p>
+        </div>
+
         <div class="card-grid">
 
           <!-- Post 1 -->

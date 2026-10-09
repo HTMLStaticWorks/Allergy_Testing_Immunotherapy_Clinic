@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
-<body>
+<body class="has-photo-hero">
 
   <!-- Header -->
   <header class="header">
@@ -88,9 +88,9 @@
 
   <main>
     <!-- Page Hero -->
-    <section class="hero" style="padding-bottom: var(--spacing-8);">
-      <div class="mesh mesh-1"></div>
-      <div class="mesh mesh-2"></div>
+    <section class="hero hero-image hero-page">
+      <img class="hero-bg" src="assets/images/hero-doctors.jpg" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="hero-scrim"></div>
       <div class="grid-overlay"></div>
 
       <div class="container">
@@ -105,6 +105,12 @@
 
     <section style="padding-top: var(--spacing-6);">
       <div class="container">
+
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Our specialists</span>
+          <h2>Meet the <span class="serif">physicians</span></h2>
+          <p>Six board-certified allergists and immunologists, each focused on a different area of allergy and immune care. Find the right specialist for your symptoms.</p>
+        </div>
 
         <div class="card-grid">
           <!-- Doctor 1 -->

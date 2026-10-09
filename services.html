@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
-<body>
+<body class="has-photo-hero">
 
   <!-- Header -->
   <header class="header">
@@ -89,9 +89,9 @@
 
   <main>
     <!-- Page Hero -->
-    <section class="hero" style="padding-bottom: var(--spacing-8);">
-      <div class="mesh mesh-1"></div>
-      <div class="mesh mesh-2"></div>
+    <section class="hero hero-image hero-page">
+      <img class="hero-bg" src="assets/images/hero-services.jpg" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="hero-scrim"></div>
       <div class="grid-overlay"></div>
 
       <div class="container">
@@ -124,9 +124,14 @@
             <strong>Note:</strong> Most insurance plans cover diagnostic allergy testing. We will verify your benefits
             prior to your appointment.
           </div>
+          <div class="service-cta">
+            <a href="contact.html" class="btn btn-primary">Book a Test <i class="ph ph-arrow-right"></i></a>
+          </div>
         </div>
         <div style="order: 2;" data-reveal="right">
-          <img src="assets/images/services-page-skin-testing.jpg" alt="Allergy skin testing" class="media-frame">
+          <a href="contact.html" class="media-frame service-media" aria-label="Book: Allergy skin testing">
+            <img src="assets/images/services-page-skin-testing.jpg" alt="Allergy skin testing">
+          </a>
         </div>
       </div>
     </section>
@@ -135,8 +140,9 @@
     <section class="bg-alt" id="immunotherapy">
       <div class="container split tight">
         <div style="order: 1;" data-reveal="left">
-          <img src="assets/images/services-page-immunotherapy-consultation.jpg" alt="Immunotherapy consultation"
-            class="media-frame">
+          <a href="contact.html" class="media-frame service-media" aria-label="Book: Immunotherapy consultation">
+            <img src="assets/images/services-page-immunotherapy-consultation.jpg" alt="Immunotherapy consultation">
+          </a>
         </div>
         <div class="service-copy" style="order: 2;" data-reveal="right">
           <div class="card-icon" style="margin-bottom: var(--spacing-3);">
@@ -154,6 +160,9 @@
             </li>
             <li><strong>Tracking:</strong> easily monitor your shot schedule via the AllerPure Patient Dashboard.</li>
           </ul>
+          <div class="service-cta">
+            <a href="contact.html" class="btn btn-primary">Start Immunotherapy <i class="ph ph-arrow-right"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -177,10 +186,14 @@
             <li><strong>Action Plans:</strong> Downloadable, personalized anaphylaxis emergency plans available directly
               in your portal.</li>
           </ul>
+          <div class="service-cta">
+            <a href="contact.html" class="btn btn-primary">Plan Your Care <i class="ph ph-arrow-right"></i></a>
+          </div>
         </div>
         <div style="order: 2;" data-reveal="right">
-          <img src="assets/images/services-page-food-allergy-nutrition.jpg" alt="Healthy eating and nutrition"
-            class="media-frame">
+          <a href="contact.html" class="media-frame service-media" aria-label="Book: Healthy eating and nutrition">
+            <img src="assets/images/services-page-food-allergy-nutrition.jpg" alt="Healthy eating and nutrition">
+          </a>
         </div>
       </div>
     </section>
